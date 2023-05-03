@@ -44,7 +44,7 @@ describe('input tests', () => {
         await page.waitForSelector('.widjet-form .cc-input.invalid');
     })
 
-    afterEach(async() => {
+    afterAll(async() => {
         await browser.close();
     })
     
