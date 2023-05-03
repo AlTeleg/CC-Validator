@@ -13,8 +13,8 @@ module.exports = {
   },
   mode: 'development',
   testMatch: [
-    '<rootDir>/**/*.test.js',
-    '<rootDir>/**/*.test.jsx',
+    '<rootDir>/src/**/*.test.js',
+    '<rootDir>/src/**/*.test.jsx',
   ],
   module: {
     rules: [
