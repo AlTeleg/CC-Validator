@@ -11,4 +11,10 @@ module.exports = merge(common, {
       }),
     ],
   },
+  devServer: {
+    port: 9000,
+    historyApiFallback: true,
+    open: true,
+    compress: true
+  },
 });
