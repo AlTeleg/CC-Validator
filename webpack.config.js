@@ -12,6 +12,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   mode: 'development',
+  testMatch: [
+    '<rootDir>/**/*.test.js',
+    '<rootDir>/**/*.test.jsx',
+  ],
   module: {
     rules: [
       {
