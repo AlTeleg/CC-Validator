@@ -50,6 +50,7 @@ describe('input tests', () => {
     })
 
     afterEach(async() => {
+        const server = fork(`${__dirname}/server.js`);
         await browser.close();
         server.kill();
     })   
