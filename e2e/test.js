@@ -6,7 +6,9 @@ describe('input tests', () => {
   
     beforeEach(async() => {
         browser = await puppeteer.launch({
-            headless: 'new'
+            ignoreHTTPSErrors: true,
+            headless: 'new',
+            devtools: false,
         });
 
         page = await browser.newPage();
