@@ -16,7 +16,9 @@ describe('input tests', () => {
             }
             })
         });
-        browser = await puppeteer.launch();
+        browser = await puppeteer.launch({
+            headless: true
+        });
         page = await browser.newPage();
     })
 
