@@ -1,10 +1,20 @@
 import puppeteer from "puppeteer";
+import { fork } from 'child_process';
 
 describe('input tests', () => {
     let browser;
     let page;
   
     beforeEach(async() => {
+        server = fork(`${__dirname}/server.js`);
+        await new Promise((resolve, reject) => {
+            server.on('error', reject);
+            server.on('message', (message) => {
+            if (message === 'ok') {
+                resolve();
+            }
+            })
+        });
         browser = await puppeteer.launch({
             ignoreHTTPSErrors: true,
             headless: true,
@@ -46,6 +56,6 @@ describe('input tests', () => {
 
     afterEach(async() => {
         await browser.close();
-    })
-    
-}) 
+    })   
+
+})
