@@ -6,7 +6,7 @@ describe('input tests', () => {
     let page;
   
     beforeEach(async() => {
-        server = fork(`${__dirname}/server.js`);
+        const server = fork(`${__dirname}/server.js`);
         await new Promise((resolve, reject) => {
             server.on('error', reject);
             server.on('message', (message) => {
