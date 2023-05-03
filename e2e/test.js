@@ -16,9 +16,6 @@ describe('input tests', () => {
             }
             })
         });
-    })
-
-    beforeEach(async() => {
         browser = await puppeteer.launch({
             headless: false
         });
@@ -54,7 +51,7 @@ describe('input tests', () => {
         await submit.click();
         await page.waitForSelector('.widjet-form .cc-input.invalid');
     })
-    
+
     afterAll(async() => {
         await browser.close();
         server.kill();
