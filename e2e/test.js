@@ -7,7 +7,7 @@ describe('input tests', () => {
     beforeEach(async() => {
         browser = await puppeteer.launch({
             ignoreHTTPSErrors: true,
-            headless: 'new',
+            headless: false,
             devtools: false,
         });
 
