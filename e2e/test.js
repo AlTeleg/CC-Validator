@@ -5,8 +5,8 @@ describe('input tests', () => {
     let browser;
     let page;
     let server;
-  
-    beforeEach(async() => {
+    
+    beforeAll(async() => {
         server = fork(`${__dirname}/server.js`);
         await new Promise((resolve, reject) => {
             server.on('error', reject);
@@ -16,6 +16,9 @@ describe('input tests', () => {
             }
             })
         });
+    })
+
+    beforeEach(async() => {
         browser = await puppeteer.launch({
             headless: false
         });
@@ -55,8 +58,8 @@ describe('input tests', () => {
     afterEach(async() => {
         await browser.close();
     })
+
     afterAll(async() => {
         server.kill();
-    })   
-
+    })
 })
