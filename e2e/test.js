@@ -4,7 +4,7 @@ describe('input tests', () => {
     let browser;
     let page;
   
-    beforeEach(async () => {
+    beforeEach(async() => {
         browser = await puppeteer.launch({
             headless: false,
             slowMo: 100,
@@ -14,7 +14,7 @@ describe('input tests', () => {
         page = await browser.newPage();
     })
 
-    it('Should be valid CC input', async () => {
+    it('Should be valid CC input', async() => {
         await page.goto('http://localhost:9000');
         await page.waitForSelector('.widjet-form');
 
@@ -27,7 +27,7 @@ describe('input tests', () => {
         await page.waitForSelector('.widjet-form .cc-input.valid');
     })
 
-    it('Should be invalid CC input', async () => {
+    it('Should be invalid CC input', async() => {
         await page.goto('http://localhost:9000');
         await page.waitForSelector('.widjet-form');
 
