@@ -54,12 +54,9 @@ describe('input tests', () => {
         await submit.click();
         await page.waitForSelector('.widjet-form .cc-input.invalid');
     })
-
-    afterEach(async() => {
-        await browser.close();
-    })
-
+    
     afterAll(async() => {
+        await browser.close();
         server.kill();
     })
 })
