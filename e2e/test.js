@@ -4,9 +4,10 @@ import { fork } from 'child_process';
 describe('input tests', () => {
     let browser;
     let page;
+    let server;
   
     beforeEach(async() => {
-        const server = fork(`${__dirname}/server.js`);
+        server = fork(`${__dirname}/server.js`);
         await new Promise((resolve, reject) => {
             server.on('error', reject);
             server.on('message', (message) => {
@@ -50,7 +51,6 @@ describe('input tests', () => {
     })
 
     afterEach(async() => {
-        const server = fork(`${__dirname}/server.js`);
         await browser.close();
         server.kill();
     })   
