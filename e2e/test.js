@@ -15,12 +15,7 @@ describe('input tests', () => {
             }
             })
         });
-        browser = await puppeteer.launch({
-            ignoreHTTPSErrors: true,
-            headless: true,
-            devtools: false,
-        });
-
+        browser = await puppeteer.launch();
         page = await browser.newPage();
     })
 
