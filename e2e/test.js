@@ -51,6 +51,7 @@ describe('input tests', () => {
 
     afterEach(async() => {
         await browser.close();
+        server.kill();
     })   
 
 })
