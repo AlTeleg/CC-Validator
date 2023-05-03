@@ -15,9 +15,9 @@ describe('input tests', () => {
     })
 
     it('Should be valid CC input', async() => {
-        await page.goto('http://localhost', {
+        await page.goto('http://localhost:9000', {
             waitUntil: 'networkidle0',
-          });
+        });
         await page.waitForSelector('.widjet-form');
 
         const widjetForm = await page.$('.widjet-form');
@@ -32,7 +32,7 @@ describe('input tests', () => {
     it('Should be invalid CC input', async() => {
         await page.goto('http://localhost:9000', {
             waitUntil: 'networkidle0',
-          });
+        });
         await page.waitForSelector('.widjet-form');
 
         const widjetForm = await page.$('.widjet-form');
