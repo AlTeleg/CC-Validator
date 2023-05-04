@@ -1,6 +1,5 @@
 import puppeteer from "puppeteer";
 import { fork } from 'child_process';
-jest.useFakeTimers();
 
 describe('input tests', () => {
     let browser;
