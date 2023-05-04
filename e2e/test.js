@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { fork } from 'child_process';
+jest.useFakeTimers();
 
 describe('input tests', () => {
     let browser;
@@ -17,7 +18,7 @@ describe('input tests', () => {
             })
         });
         browser = await puppeteer.launch({
-            headless: true
+            headless: false
         });
         page = await browser.newPage();
     })

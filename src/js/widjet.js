@@ -6,10 +6,13 @@ import ax from '../img/amex.png';
 import dsr from '../img/discover.png';
 import dc from '../img/diners-club.png';
 import mir from '../img/mir.png';
+import { Validator } from './validator';
 
 export class Widjet {
     constructor(parentEl) {
         this.parenEl = parentEl;
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onInput = this.onInput.bind(this);
     }
 
     static get markup() {
@@ -22,9 +25,12 @@ export class Widjet {
         `;
     }
 
-    bindToDom() {
+    bindToDOM() {
         this.parenEl.innerHTML = Widjet.markup;
-        const imgContainer = document.querySelector('.img-container');
+        this.element = document.querySelector('.widjet-form');
+        this.input = document.querySelector('.cc-input');
+        this.submit = document.querySelector('.validate-btn');
+        this.imgContainer = document.querySelector('.img-container');
 
         const img1 = new Image();
         img1.src = vs;
@@ -51,13 +57,69 @@ export class Widjet {
         img8.src = mir;
         img8.alt = 'mir';
 
-        imgContainer.appendChild(img1);
-        imgContainer.appendChild(img2);
-        imgContainer.appendChild(img3);
-        imgContainer.appendChild(img4);
-        imgContainer.appendChild(img5);
-        imgContainer.appendChild(img6);
-        imgContainer.appendChild(img7);
-        imgContainer.appendChild(img8);
+        this.imgContainer.appendChild(img1);
+        this.imgContainer.appendChild(img2);
+        this.imgContainer.appendChild(img3);
+        this.imgContainer.appendChild(img4);
+        this.imgContainer.appendChild(img5);
+        this.imgContainer.appendChild(img6);
+        this.imgContainer.appendChild(img7);
+        this.imgContainer.appendChild(img8);
+
+        this.element.addEventListener('submit', this.onSubmit);
+        this.element.addEventListener('input', this.onInput);
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        let validator = new Validator(this.input.value);
+        if (!validator.checkLuhn()) {
+            console.log(this.element)
+            this.element.style.background = 'red';
+            this.input.classList.remove('valid');
+            this.input.classList.add('invalid');
+            setTimeout(() => {
+                this.element.style.background = 'white';
+            }, 1000);
+        } else {
+            this.element.style.background = 'lightgreen';
+            this.input.classList.remove('invalid');
+            this.input.classList.add('valid');
+            setTimeout(() => {
+                this.element.style.background = 'white';
+            }, 1000);
+        }
+    }
+
+    onInput(e) {
+        e.preventDefault();
+        let validator = new Validator(this.input.value);
+        if (validator.checkPaymentSystem()) {
+            Array.from(this.imgContainer.children).forEach(
+                (child) => (child.style.opacity = '20%')
+            );
+            if (validator.checkPaymentSystem() == 'VISA') {
+                this.imgContainer.firstChild.style.opacity = '100%';
+            } else if (validator.checkPaymentSystem() == 'MASTERCARD') {
+                this.imgContainer.children[1].style.opacity = '100%';
+                console.log('Mastercard');
+            } else if (validator.checkPaymentSystem() == 'AMEX') {
+                this.imgContainer.children[2].style.opacity = '100%';
+            } else if (validator.checkPaymentSystem() == 'DISCOVER') {
+                this.imgContainer.children[3].style.opacity = '100%';
+            } else if (validator.checkPaymentSystem() == 'JCB') {
+                this.imgContainer.children[4].style.opacity = '100%';
+            } else if (validator.checkPaymentSystem() == 'DINERS') {
+                this.imgContainer.children[5].style.opacity = '100%';
+            } else if (validator.checkPaymentSystem() == 'UNION_PAY') {
+                this.imgContainer.children[6].style.opacity = '100%';
+            } else if (validator.checkPaymentSystem() == 'MIR') {
+                this.imgContainer.children[7].style.opacity = '100%';
+            }
+        } else {
+            Array.from(this.imgContainer.children).forEach(
+                (child) => (child.style.opacity = '100%')
+            );
+        }
     }
 }

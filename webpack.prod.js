@@ -7,7 +7,7 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       new CssMinimizerPlugin({
-        test: /\.foo\.css$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
       }),
     ],
   },
