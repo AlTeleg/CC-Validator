@@ -10,10 +10,10 @@ describe('JSDOM tests', () => {
         widjet.bindToDOM();
 
         expect(container.innerHTML).toEqual(`
-    <form class=\"widjet-form\">
-        <div class=\"img-container\"><img src=\"\" alt=\"visa\"><img src=\"\" alt=\"mastercard\"><img src=\"\" alt=\"amex\"><img src=\"\" alt=\"discover\"><img src=\"\" alt=\"jcb\"><img src=\"\" alt=\"diners-club\"><img src=\"\" alt=\"unionpay\"><img src=\"\" alt=\"mir\"></div>
-        <input class=\"cc-input\" id=\"cc-i\" type=\"text\">
-        <button type=\"submit\" class=\"validate-btn\">Click to Validate</button>
+    <form class="widjet-form">
+        <div class="img-container"><img src="" alt="visa"><img src="" alt="mastercard"><img src="" alt="amex"><img src="" alt="discover"><img src="" alt="jcb"><img src="" alt="diners-club"><img src="" alt="unionpay"><img src="" alt="mir"></div>
+        <input class="cc-input" id="cc-i" type="text">
+        <button type="submit" class="validate-btn">Click to Validate</button>
     </form>
         `);
     })
